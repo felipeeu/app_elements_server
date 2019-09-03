@@ -4,18 +4,18 @@
 module.exports = (app) => {
     const elements = require('../controllers/element.controller.js');
 
-    // Create a new Note
+    // Create a new Element
     app.post('/elements', elements.create);
 
     // Retrieve all Notes
     app.get('/elements', elements.findAll);
 
-    // Retrieve a single Note with noteId
+    // Retrieve a single Element with noteId
     app.get('/elements/:elementId', elements.findOne);
 
-    // Update a Note with noteId
+    // Update a Element with noteId
     app.put('/elements/:elementId', elements.update);
 
-    // Delete a Note with noteId
+    // Delete a Element with noteId
     app.delete('/elements/:elementId', elements.delete);
 }

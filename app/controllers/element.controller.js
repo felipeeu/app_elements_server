@@ -21,6 +21,7 @@ exports.create = (req, res) => {
     .then(data => {
         res.send(data);
     }).catch(err => {
+        console.log("caiu no catch")
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Element."
         });
@@ -28,14 +29,15 @@ exports.create = (req, res) => {
 };
 
 // Retrieve and return all elements from the database.
-exports.findAll = (res) => {
+exports.findAll = (req,res) => {
     Element.find()
     .then(elements => {
-        res.send(elements);
+         res.send(elements);
     }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving elements."
-        });
+        console.log("erro do catch: ",err)
+        // res.status(500).send({
+        //     message: err.message || "Some error occurred while retrieving elements."
+        // });
     });
 };
 
