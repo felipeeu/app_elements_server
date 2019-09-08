@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
 const ElementSchema = mongoose.Schema({
-    name: String,
-    number: Number,
-    student: String
+    student: String,
+    element: String,
+    symbol: String,
+    number: String,
+    word: String,
+    artdesc: String,
+    elementdesc: String,
+    
 }, );
 
 module.exports = mongoose.model('Element', ElementSchema);
+

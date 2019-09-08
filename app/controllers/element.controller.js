@@ -1,19 +1,23 @@
 const Element = require('../models/element.model.js');
 
 // Create and Save a new Element
-exports.create = (req, res) => {
-    // Validate request
+exports.create = (req,res) => {
+   // Validate request
     if(!req.body.number) {
         return res.status(400).send({
-            message: "Element content can not be empty"
+            message: "Element number can not be empty"
         });
     }
 
     // Create a Element
     const element= new Element({
-        name: req.body.name, 
+        student: req.body.student,
+        element: req.body.element,
+        symbol: req.body.symbol,
         number: req.body.number,
-        student: req.body.student
+        word: req.body.word,
+        artdesc: req.body.artdesc,
+        elementdesc: req.body.elementdesc,
     });
 
     // Save element in the database
@@ -21,7 +25,6 @@ exports.create = (req, res) => {
     .then(data => {
         res.send(data);
     }).catch(err => {
-        console.log("caiu no catch")
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Element."
         });
