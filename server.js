@@ -27,14 +27,25 @@ db.once("open", () => {
   console.log("connect to database");
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
+
+
+
+
+
 // define a simple route
-app.get("/", (req, res) => {
+app.get("/",(req, res) => {
   res.json({ message: "Welcome to Elements application." });
 });
 
